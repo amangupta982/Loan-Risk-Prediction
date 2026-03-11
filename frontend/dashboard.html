@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Decision Dashboard | SmartCredit AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fa-solid fa-brain logo-icon"></i>
+                <span class="logo-text-dark">SmartCredit</span> <span class="logo-text-green">AI</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="analysis.html">Loan Analysis</a></li>
+                <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                <li><a href="simulator.html">Simulator</a></li>
+            </ul>
+            <button class="btn-start" onclick="window.location.href='analysis.html'">Start Analysis</button>
+        </div>
+    </nav>
+
+    <main class="dashboard-container">
+        
+        <div class="dashboard-header animate-in">
+            <h1>AI Decision Dashboard</h1>
+            <p>AI-powered financial risk analysis and lending decision.</p>
+        </div>
+
+        <div class="card decision-card animate-in">
+            <div class="decision-item">
+                <span class="decision-label">Loan Decision</span>
+                <div class="badge-large approved" id="decisionBadge">
+                    <i class="fa-regular fa-circle-check"></i> Approved
+                </div>
+            </div>
+            <div class="decision-item">
+                <span class="decision-label">Risk Score</span>
+                <div class="decision-value" id="riskScoreValue"><strong>15</strong><span class="muted">/100</span></div>
+            </div>
+            <div class="decision-item">
+                <span class="decision-label">AI Confidence</span>
+                <div class="decision-value"><strong id="aiConfidenceValue">87%</strong></div>
+            </div>
+        </div>
+
+        <div class="metrics-grid">
+            <div class="card metric-card animate-in">
+                <div class="metric-header">
+                    <i class="fa-solid fa-indian-rupee-sign"></i>
+                </div>
+                <div class="metric-value" id="displayIncome">₹850,000</div>
+            </div>
+            <div class="card metric-card animate-in">
+                <div class="metric-header">
+                    <i class="fa-solid fa-arrow-trend-up"></i> Loan Amount
+                </div>
+                <div class="metric-value" id="displayLoan">₹2,500,000</div>
+            </div>
+            <div class="card metric-card animate-in">
+                <div class="metric-header">
+                    <i class="fa-regular fa-credit-card"></i> Credit Score
+                </div>
+                <div class="metric-value" id="displayCredit">750</div>
+            </div>
+            <div class="card metric-card animate-in">
+                <div class="metric-header">
+                    <i class="fa-regular fa-building"></i> Total Assets
+                </div>
+                <div class="metric-value" id="displayAssets">₹7,000,000</div>
+            </div>
+        </div>
+
+        <div class="charts-grid">
+            
+            <div class="card chart-card animate-in">
+                <h3 class="card-title"><i class="fa-solid fa-brain text-green"></i> AI Probability Meter</h3>
+                <div class="gauge-container">
+                    <canvas id="probabilityChart"></canvas>
+                    <div class="gauge-text">
+                        <span class="gauge-value" id="gaugeValueText">87%</span>
+                        <span class="gauge-label">Approval Probability</span>
+                    </div>
+                </div>
+                <div class="est-payment">
+                    <span class="payment-label">Est. Monthly Payment</span>
+                    <span class="payment-value" id="estPaymentValue">₹78,341</span>
+                </div>
+            </div>
+
+            <div class="card chart-card animate-in">
+                <h3 class="card-title"><i class="fa-regular fa-shield-check text-green"></i> Borrower Risk Heatmap</h3>
+                <div class="heatmap-container">
+                    <div class="progress-item">
+                        <div class="progress-header">
+                            <span>Income Stability</span>
+                            <span class="badge risk-low">Low Risk</span>
+                        </div>
+                        <div class="progress-track"><div class="progress-fill fill-green" data-width="90%"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-header">
+                            <span>Credit Quality</span>
+                            <span class="badge risk-medium">Medium</span>
+                        </div>
+                        <div class="progress-track"><div class="progress-fill fill-orange" data-width="65%"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-header">
+                            <span>Asset Strength</span>
+                            <span class="badge risk-low">Low Risk</span>
+                        </div>
+                        <div class="progress-track"><div class="progress-fill fill-green" data-width="85%"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-header">
+                            <span>Loan Burden</span>
+                            <span class="badge risk-low">Low Risk</span>
+                        </div>
+                        <div class="progress-track"><div class="progress-fill fill-green" data-width="80%"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card chart-card span-full animate-in">
+                <h3 class="card-title"><i class="fa-solid fa-arrow-trend-up text-green"></i> Risk Trend Analysis</h3>
+                <div class="canvas-wrapper wide-chart">
+                    <canvas id="trendChart"></canvas>
+                </div>
+            </div>
+
+            <div class="card chart-card animate-in">
+                <h3 class="card-title"><i class="fa-solid fa-chart-pie text-green"></i> Asset Distribution</h3>
+                <div class="canvas-wrapper">
+                    <canvas id="assetChart"></canvas>
+                </div>
+            </div>
+
+            <div class="card chart-card animate-in">
+                <h3 class="card-title"><i class="fa-solid fa-chart-simple text-green"></i> Financial Risk Metrics</h3>
+                <div class="canvas-wrapper">
+                    <canvas id="metricsChart"></canvas>
+                </div>
+            </div>
+
+            <div class="card chart-card animate-in">
+                <h3 class="card-title"><i class="fa-solid fa-lightbulb text-green"></i> AI Financial Insights</h3>
+                
+                <div class="insights-container" id="aiInsightsPanel">
+                    </div>
+                
+                <div id="voiceInteraction" style="margin-top: 20px; border-top: 1px solid #e2e8f0; padding-top: 15px;">
+                    <button id="micBtn" style="width: 100%; padding: 12px; background: #3b82f6; color: white; border-radius: 8px; border: none; cursor: pointer; font-weight: 600; font-size: 1em; display: flex; align-items: center; justify-content: center; gap: 8px; transition: background 0.3s;">
+                        <i class="fa-solid fa-microphone"></i> Ask AI Coach
+                    </button>
+                    <p id="userTranscript" style="font-style: italic; color: #64748b; margin-top: 10px; font-size: 0.9em; text-align: center; min-height: 20px;"></p>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <i class="fa-solid fa-brain logo-icon"></i>
+                <span class="logo-text-dark">SmartCredit</span> <span class="logo-text-green">AI</span>
+            </div>
+            <ul class="footer-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Analysis</a></li>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Simulator</a></li>
+            </ul>
+            <div class="copyright">
+                &copy; 2026 SmartCredit AI. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
