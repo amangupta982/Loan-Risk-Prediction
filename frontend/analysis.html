@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Risk Analysis | SmartCredit AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="analysis.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fa-solid fa-brain logo-icon"></i>
+                <span class="logo-text-dark">SmartCredit</span> <span class="logo-text-green">AI</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="analysis.html" class="active">Loan Analysis</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="simulator.html">Simulator</a></li>
+            </ul>
+            <button class="btn-start"onclick="window.location.href='analysis.html'">Start Analysis</button>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="header-section">
+            <h1>Loan Risk Analysis</h1>
+            <p>Enter borrower financial data for AI-powered risk assessment.</p>
+        </div>
+
+        <div class="card" id="analysisCard">
+            <h2>Borrower Financial Information</h2>
+            
+            <form id="loanForm" novalidate>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="annualIncome">Annual Income</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-indian-rupee-sign"></i>
+                            <input type="number" id="annualIncome" placeholder="e.g. 850000" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="loanAmount">Loan Amount</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-arrow-trend-up"></i>
+                            <input type="number" id="loanAmount" placeholder="e.g. 2500000" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="loanTerm">Loan Term (months)</label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-calendar-days"></i>
+                            <input type="number" id="loanTerm" placeholder="e.g. 36" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cibilScore">CIBIL Score</label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-credit-card"></i>
+                            <input type="number" id="cibilScore" placeholder="e.g. 750" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="residentialAsset">Residential Asset Value</label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-building"></i>
+                            <input type="number" id="residentialAsset" placeholder="e.g. 3000000" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="commercialAsset">Commercial Asset Value</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-building"></i>
+                            <input type="number" id="commercialAsset" placeholder="e.g. 1500000" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="luxuryAsset">Luxury Asset Value</label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-gem"></i>
+                            <input type="number" id="luxuryAsset" placeholder="e.g. 500000" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bankAsset">Bank Asset Value</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-building-columns"></i>
+                            <input type="number" id="bankAsset" placeholder="e.g. 2000000" required>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-analyze" id="submitBtn">Analyze Loan Risk</button>
+            </form>
+        </div>
+    </main>
+
+    <div id="processingOverlay" class="processing-overlay">
+        <div class="processing-card">
+            <div class="spinner-container">
+                <div class="main-spinner"></div>
+                <i class="fa-solid fa-brain processing-icon"></i>
+            </div>
+            
+            <h2 class="processing-title">AI Processing</h2>
+            <p class="processing-subtitle">Analyzing borrower financial profile...</p>
+
+            <div class="process-steps">
+                <div class="step" id="step1">
+                    <div class="status-icon"><i class="fa-solid fa-circle-notch fa-spin"></i></div>
+                    <span>Analyzing borrower financial data</span>
+                    <i class="fa-solid fa-check check-mark"></i>
+                </div>
+                <div class="step" id="step2">
+                    <div class="status-icon"><i class="fa-solid fa-circle-notch fa-spin"></i></div>
+                    <span>Evaluating credit score metrics</span>
+                    <i class="fa-solid fa-check check-mark"></i>
+                </div>
+                <div class="step" id="step3">
+                    <div class="status-icon"><i class="fa-solid fa-circle-notch fa-spin"></i></div>
+                    <span>Calculating financial ratios</span>
+                    <i class="fa-solid fa-check check-mark"></i>
+                </div>
+                <div class="step" id="step4">
+                    <div class="status-icon"><i class="fa-solid fa-circle-notch fa-spin"></i></div>
+                    <span>Running AI prediction model</span>
+                    <i class="fa-solid fa-check check-mark"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <i class="fa-solid fa-brain logo-icon"></i>
+                <span class="logo-text-dark">SmartCredit</span> <span class="logo-text-green">AI</span>
+            </div>
+            <ul class="footer-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Analysis</a></li>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Simulator</a></li>
+            </ul>
+            <div class="copyright">
+                &copy; 2026 SmartCredit AI. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="analysis.js"></script>
+</body>
+</html>
