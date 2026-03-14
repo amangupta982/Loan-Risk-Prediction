@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Scenario Simulator | SmartCredit AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="simulator.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fa-solid fa-brain logo-icon"></i>
+                <span class="logo-text-dark">SmartCredit</span> <span class="logo-text-green">AI</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="analysis.html">Loan Analysis</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="simulator.html" class="active">Simulator</a></li>
+            </ul>
+            <button class="btn-start"onclick="window.location.href='analysis.html'">Start Analysis</button>
+        </div>
+    </nav>
+
+    <main class="simulator-container">
+        
+        <div class="header-section fade-in">
+            <h1>Financial Scenario Simulator</h1>
+            <p>Adjust parameters to see real-time impact on risk and loan decision.</p>
+        </div>
+
+        <div class="simulator-grid">
+            
+            <div class="card parameters-card fade-in">
+                <h3 class="card-title"><i class="fa-solid fa-sliders text-green"></i> Adjust Parameters</h3>
+                
+                <div class="sliders-container">
+                    <div class="slider-group">
+                        <div class="slider-header">
+                            <label><i class="fa-solid fa-dollar-sign text-green"></i> Annual Income</label>
+                            <span class="slider-value" id="val-income">₹850,000</span>
+                        </div>
+                        <input type="range" id="slide-income" min="300000" max="5000000" step="50000" value="850000">
+                    </div>
+
+                    <div class="slider-group">
+                        <div class="slider-header">
+                            <label><i class="fa-solid fa-arrow-trend-up text-green"></i> Loan Amount</label>
+                            <span class="slider-value" id="val-loan">₹2,500,000</span>
+                        </div>
+                        <input type="range" id="slide-loan" min="500000" max="10000000" step="100000" value="2500000">
+                    </div>
+
+                    <div class="slider-group">
+                        <div class="slider-header">
+                            <label><i class="fa-regular fa-clock text-green"></i> Loan Duration (months)</label>
+                            <span class="slider-value" id="val-duration">36 mo</span>
+                        </div>
+                        <input type="range" id="slide-duration" min="12" max="120" step="6" value="36">
+                    </div>
+
+                    <div class="slider-group">
+                        <div class="slider-header">
+                            <label><i class="fa-solid fa-percent text-green"></i> Interest Rate (%)</label>
+                            <span class="slider-value" id="val-rate">8.0%</span>
+                        </div>
+                        <input type="range" id="slide-rate" min="5.0" max="15.0" step="0.1" value="8.0">
+                    </div>
+                </div>
+            </div>
+
+            <div class="card results-card fade-in">
+                <h3 class="card-title"><i class="fa-solid fa-chart-line text-green"></i> Simulation Results</h3>
+                
+                <div class="metrics-row" id="metrics-container">
+                    <div class="metric-box">
+                        <span class="metric-label">Monthly Payment</span>
+                        <span class="metric-value" id="res-payment">₹78,341</span>
+                    </div>
+                    <div class="metric-box">
+                        <span class="metric-label">Risk Score</span>
+                        <span class="metric-value" id="res-score">12</span>
+                    </div>
+                    <div class="metric-box">
+                        <span class="metric-label">Approval Prob.</span>
+                        <span class="metric-value text-green" id="res-prob">88%</span>
+                    </div>
+                </div>
+
+                <div class="comparison-box">
+                    <div class="comp-side">
+                        <span class="comp-label">Original Risk</span>
+                        <span class="comp-value">12</span>
+                        <span class="badge approved">Approved</span>
+                    </div>
+                    <div class="comp-divider">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                    <div class="comp-side">
+                        <span class="comp-label">Simulated Risk</span>
+                        <span class="comp-value" id="sim-risk-value">12</span>
+                        <span class="badge" id="sim-status-badge">Approved</span>
+                    </div>
+                </div>
+
+                <div class="status-message" id="status-message">
+                    No change in risk score.
+                </div>
+            </div>
+        </div>
+
+        <div class="card chart-card fade-in">
+            <h3 class="card-title">Risk Comparison</h3>
+            <div class="canvas-wrapper">
+                <canvas id="comparisonChart"></canvas>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <i class="fa-solid fa-brain logo-icon"></i>
+                <span class="logo-text-dark">SmartCredit</span> <span class="logo-text-green">AI</span>
+            </div>
+            <ul class="footer-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Analysis</a></li>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Simulator</a></li>
+            </ul>
+            <div class="copyright">
+                &copy; 2026 SmartCredit AI. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="simulator.js"></script>
+</body>
+</html>
